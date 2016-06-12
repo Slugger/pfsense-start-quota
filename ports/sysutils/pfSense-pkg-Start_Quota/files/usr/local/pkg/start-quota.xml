@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE packagegui SYSTEM "../schema/packages.dtd">
+<?xml-stylesheet type="text/xsl" href="../xsl/package.xsl"?>
+<packagegui>
+	<copyright>
+	<![CDATA[
+/*
+ Copyright 2016 Battams, Derek
+ 
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+ 
+		http://www.apache.org/licenses/LICENSE-2.0
+ 
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/	
+	]]>
+	</copyright>
+	<description>Start.ca Quota Summary Page</description>
+	<name>startquota</name>
+	<title>Start.ca: Quota Summary</title>
+	<menu>
+		<name>Start.ca Quota</name>
+		<tooltiptext>Display Start.ca data usage and remaining quota for current billing period.</tooltiptext>
+		<section>Status</section>
+		<url>/start_quota.php</url>
+	</menu>
+	<aftersaveredirect>/start_quota.php</aftersaveredirect>
+	<fields>
+		<field>
+			<fielddescr>Start.ca API Key</fielddescr>
+			<fieldname>startapikey</fieldname>
+			<type>input</type>
+			<description>Start.ca API Key</description>
+			<required>true</required>
+		</field>
+		<field>
+			<fielddescr>Monthly Quota</fielddescr>
+			<fieldname>startquota</fieldname>
+			<type>input</type>
+			<description>Monthly quota in GBs; use 0 if unlimited</description>
+			<required>true</required>
+		</field>
+	</fields>
+	<custom_php_validation_command><![CDATA[
+		if(preg_match('/^\d+$/', $_POST['startquota']) !== 1)
+			$input_errors[] = 'Quota must be a positive integer!';
+	]]></custom_php_validation_command>
+</packagegui>

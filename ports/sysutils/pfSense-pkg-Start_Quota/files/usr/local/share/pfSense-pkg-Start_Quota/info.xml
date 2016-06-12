@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<pfsensepkgs>
+	<package>
+		<name>Start Quota</name>
+		<internal_name>Start_Quota</internal_name>
+		<descr><![CDATA[Start.ca Quota Page, which will give an overview of the data usage and remaining quota for the current billing period.]]></descr>
+		<version>%%PKGVERSION%%</version>
+		<configurationfile>start-quota.xml</configurationfile>
+	</package>
+</pfsensepkgs>

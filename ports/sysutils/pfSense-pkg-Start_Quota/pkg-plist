@@ -1,0 +1,5 @@
+pkg/start-quota.xml
+/etc/inc/start_quota.inc
+www/start_quota.php
+www/start_quota_nodata.php
+%%DATADIR%%/info.xml
