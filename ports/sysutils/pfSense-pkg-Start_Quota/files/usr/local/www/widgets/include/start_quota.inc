@@ -14,7 +14,6 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-require_once('start_quota.inc');
 $start_quota_title = 'Start.ca Usage';
 $start_quota_title_link = '/start_quota.php';
 ?>
