@@ -2,4 +2,6 @@ pkg/start-quota.xml
 /etc/inc/start_quota.inc
 www/start_quota.php
 www/start_quota_nodata.php
+www/widgets/widgets/start_quota.widget.php
+www/widgets/include/start_quota.inc
 %%DATADIR%%/info.xml
