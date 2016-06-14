@@ -53,6 +53,8 @@ do-install:
 		${STAGEDIR}${PREFIX}/www
 	${INSTALL_DATA} ${FILESDIR}${PREFIX}/www/start_quota_nodata.php \
 		${STAGEDIR}${PREFIX}/www
+	${INSTALL_DATA} ${FILESDIR}${PREFIX}/www/start_quota_ajax.php \
+		${STAGEDIR}${PREFIX}/www
 	${INSTALL_DATA} ${FILESDIR}${PREFIX}/www/widgets/widgets/start_quota.widget.php \
 		${STAGEDIR}${PREFIX}/www/widgets/widgets
 	${INSTALL_DATA} ${FILESDIR}${PREFIX}/www/widgets/include/start_quota.inc \
