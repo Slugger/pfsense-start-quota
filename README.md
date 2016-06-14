@@ -23,3 +23,7 @@ When you attempt to load the status page after installation it will recognize th
 # Uninstall
 
 `pkg delete pfSense-pkg-Start_Quota`
+
+# Data Caching
+
+As per Start's API spec, usage data is cached for 60 minutes at a time.  Additional requests for usage data simply reload the existing cached data for that full hour.  In other words, there is no point in constantly refreshing your dashboard or the status page as the data it's showing you is read from the local cache stored on the pfSense system.  Only after an hour will the Start servers be hit again for updated data.
