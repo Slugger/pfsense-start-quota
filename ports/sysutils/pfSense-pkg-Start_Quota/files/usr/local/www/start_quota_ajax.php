@@ -15,6 +15,7 @@
 	limitations under the License.
 */
 require_once("guiconfig.inc");
+require_once('start_quota.inc');
 require_once('/usr/local/www/widgets/include/start_quota.inc');
 $xml = new SimpleXMLElement(getXmlData());
 ?>
