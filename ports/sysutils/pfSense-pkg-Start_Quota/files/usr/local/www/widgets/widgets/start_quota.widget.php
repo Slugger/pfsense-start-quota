@@ -23,7 +23,7 @@ require_once('/usr/local/www/widgets/include/start_quota.inc');
 <script>
 events.push(
 	function() {
-		var ajax = $.ajax("/start_quota_ajax.php?seed=<?= time() ?>")
+		var ajax = $.ajax("/start_quota_ajax.php")
 			.done(function(data) {
 				$("#start_quota_container").html(data);
 			})

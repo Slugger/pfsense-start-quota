@@ -16,26 +16,30 @@
 	limitations under the License.
 */
 
+define(START_CACHE, '/tmp/startquota.xml');
+
 function getXmlData() {
-	$xmlFile = '/tmp/startquota.xml';
+	$xmlFile = START_CACHE;
 	if(file_exists($xmlFile) && time() - getDataDate() < 3600)
 		return file_get_contents($xmlFile);
 	else {
 		$xmlData = file_get_contents('http://www.start.ca/support/usage/api?key=' . getApiKey()); 
-		if($xmlData !== false && $xmlData != 'ERROR')
+		if($xmlData !== false && $xmlData != 'ERROR') {
+			unlink($xmlFile); // force clearing of stat cache
 			file_put_contents($xmlFile, $xmlData);
+		}
 		return $xmlData;
 	}
 }
 
 function getDataDate() {
-	return filemtime('/tmp/startquota.xml');
+	return filemtime(START_CACHE);
 }
 
 function isConfigured() {
 	global $config;
 	$pluginConfig = $config['installedpackages']['startquota']['config'][0];
-	return !empty($pluginConfig['startapikey']) && $pluginConfig['startquota'] != ''; 
+	return !empty(getApiKey()) && $pluginConfig['startquota'] != ''; 
 }
 
 function getApiKey() {
