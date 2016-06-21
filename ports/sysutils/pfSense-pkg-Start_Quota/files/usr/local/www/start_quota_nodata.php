@@ -41,4 +41,7 @@ $e = $_SESSION['START_QUOTA_ERROR']
 	</pre></div>
 </div>
 
-<?php include("foot.inc"); ?>
+<?php
+include("foot.inc");
+unset($_SESSION['START_QUOTA_ERROR']);
+?>
