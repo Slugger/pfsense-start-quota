@@ -15,7 +15,7 @@
 #	limitations under the License.
 
 PORTNAME=	pfSense-pkg-Start_Quota
-PORTVERSION=	1.0.0
+PORTVERSION=	1.0.1
 PORTREVISION=	0
 CATEGORIES=	sysutils
 MASTER_SITES=	# empty
