@@ -24,6 +24,8 @@ include("head.inc");
 $tabs = array();
 $tabs[] = array(gettext("Settings"), false, "/pkg_edit.php?xml=start-quota.xml&id=0");
 display_top_tabs($tabs);
+session_start();
+$e = $_SESSION['START_QUOTA_ERROR'] 
 ?>
 
 <div class="panel panel-default">
@@ -31,8 +33,12 @@ display_top_tabs($tabs);
 	<div class="panel-body">
 		There was an error fetching the quota data from the Start 
 		Communications servers.  Check the package settings and ensure
-		the API key is correct.
+		the API key is correct.  If an exception was provided then it
+		will be displayed below.
 	</div>
+	<div id="exception"><pre>
+<?php if($e != NULL) echo $e; ?>	
+	</pre></div>
 </div>
 
 <?php include("foot.inc"); ?>

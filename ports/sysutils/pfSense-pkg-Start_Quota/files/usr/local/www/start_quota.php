@@ -26,6 +26,8 @@ $API_KEY = getApiKey();
 try {
 	$xml = new SimpleXMLElement(getXmlData());
 } catch(Exception $e) {
+	session_start();
+	$_SESSION['START_QUOTA_ERROR'] = $e;
 	header("Location: /start_quota_nodata.php");	
 }
 $pgtitle = array(gettext("Start.ca"), gettext("Quota"));
