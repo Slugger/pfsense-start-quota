@@ -79,21 +79,23 @@ display_top_tabs($tabs);
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawCharts);
+	events.push(
+		function() {
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawCharts);
+		}
+	);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawCharts() {
-	<?php if(getQuota() > 0) echo 'drawRemainingQuotaChart();' ?>
-	drawDataUsageChart();
+	var container = $('#quota_div');
+	<?php if(getQuota() > 0) echo 'drawRemainingQuotaChart(container.css(\'color\'), container.css(\'background-color\'));' ?>
+	drawDataUsageChart(container.css('color'), container.css('background-color'));
       }
 
-      function drawDataUsageChart() {
+      function drawDataUsageChart(txtColor, bgColor) {
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Data Type');
@@ -109,14 +111,17 @@ display_top_tabs($tabs);
         // Set chart options
         var options = {'title':'Data Usage for Current Billing Period',
                        'width':850,
-                       'height':350};
+                       'height':350,
+			'backgroundColor': bgColor,
+			'legend.textStyle': { color: txtColor },
+			'tooltip': { isHtml: true, textStyle: { color: 'black' }}};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('usage_div'));
         chart.draw(data, options);
       }
 
-      function drawRemainingQuotaChart() {
+      function drawRemainingQuotaChart(txtColor, bgColor) {
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Data Type');
@@ -134,7 +139,11 @@ display_top_tabs($tabs);
         // Set chart options
         var options = {'title':'Cap Usage for Current Billing Period',
                        'width':850,
-                       'height':350};
+                       'height':350,
+                        'backgroundColor': bgColor,
+                        'legend.textStyle': { color: txtColor },
+			'tooltip': { isHtml: true, textStyle: { color: 'black' } }
+			};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('quota_div'));
